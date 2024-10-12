@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calculator</title>
+<style>
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #d2d8cc;
+  }
+
+  .calculator {
+    background-color: #db1212;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(54, 13, 201, 0.1);
+  }
+
+  .calculator .keys button {
+    width: 50px;
+    height: 50px;
+    margin: 5px;
+    font-size: 20px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    background-color: #f0f0f0;
+  }
+
+  .calculator .keys button.operator {
+    background-color: #fcb300;
+    color: #fff;
+  }
+
+  .calculator .keys button.equal {
+    background-color: #13c5ed;
+    color: #fff;
+  }
+</style>
+</head>
+<body>
+<div class="calculator">
+  <input type="text" class="display" id="display" readonly>
+  <div class="keys">
+    <button>7</button>
+    <button>8</button>
+    <button>9</button>
+    <button class="operator">/</button> <br>
+    <button>4</button>
+    <button>5</button>
+    <button>6</button>
+    <button class="operator">*</button> <br>
+    <button>1</button>
+    <button>2</button>
+    <button>3</button>button.equal<button class="equal">=</button>
+    <button class="operator">+</button>
+  </div>
+</div>
+
+<script>
+  const display = document.getElementById('display');
+  const keys = document.querySelector('.keys');
+  keys.addEventListener('click', e => {
+    if (e.target.matches('button')) {
+      const key = e.target;
+      const action = key.textContent;
+      const displayedNum = display.value;
+      if (action === 'C') {
+        display.value = '';
+      } else if (action === '=') {
+        display.value = eval(displayedNum);
+      } else {
+        display.value = displayedNum + action;
+      }
+    }
+  });
+</script>
+</body>
+</html>
